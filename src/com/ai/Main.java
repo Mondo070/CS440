@@ -11,18 +11,18 @@ public class Main {
         Scanner sc = new Scanner(file);
         int gridRow;
         int gridCol;
-        int startRow;
-        int startCol;
-        int goalRow;
-        int goalCol;
+        int startRow = 0;
+        int startCol = 0;
+        int goalRow = 0;
+        int goalCol = 0;
         int currRow;
         int currCol;
         int[][] grid = null;
         while(sc.hasNextLine()) {
-        	startRow = sc.nextInt();
         	startCol = sc.nextInt();
-        	goalRow = sc.nextInt();
+        	startRow = sc.nextInt();
         	goalCol = sc.nextInt();
+        	goalRow = sc.nextInt();
         	gridRow = sc.nextInt();
         	gridCol = sc.nextInt();
         	grid = new int[gridRow][gridCol];
@@ -35,7 +35,15 @@ public class Main {
 
         for (int i = 0; i < grid[0].length + 1; i++) {
             for (int j = 0; j < grid.length + 1; j++) {
-                System.out.print("*    ");
+            	if (i == startRow-1 && j == startCol-1) {
+            		System.out.print("s    ");
+            	}
+            	else if (i == goalRow-1 && j == goalCol-1) {
+            		System.out.print("g    ");
+            	}
+            	else {
+            		System.out.print("*    ");
+            	}
             }
             System.out.println();
             for (int[] ints : grid) {
