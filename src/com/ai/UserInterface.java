@@ -56,6 +56,10 @@ public class UserInterface {
             System.out.println();
         }
 
+        //Logic.FindPath(grid, start, goal);
+
+        /*Logic logic = new Logic(grid, start, goal);
+        logic.FindPath();*/
         /*Vertex[][] vertices = new Vertex[gridRow+1][gridCol+1];
         for (int i = 0; i < vertices.length; i++) {
             for (int j = 0; j < vertices[0].length; j++) {

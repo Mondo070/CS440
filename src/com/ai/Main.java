@@ -8,25 +8,31 @@ import java.io.FileNotFoundException;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        // write your code here
-        /*int[][] map = {
-                {0, 0, 0, 0, 0},
-                {0, 0, 1, 0, 1},
-                {1, 0, 0, 1, 1},
-                {0, 0, 0, 1, 0},
-                {1, 1, 0, 0, 1}
-        };
+		// write your code here
+		int[][] map = {
+				{0, 1, 0, 0},
+				{0, 0, 0, 1}
+		};
 
-        Vertex start = new Vertex(0, 0, null);
-        Vertex end = new Vertex(3, 4, null);
-        List<Vertex> path = FindPath(map, start, end);
-        if (path != null) {
-            for (Vertex v : path) {
-                System.out.println(v);
-            }
-        } else
-            System.out.println("No path found");
-    }*/
+		Vertex start = new Vertex(3, 2, null);
+		Vertex goal = new Vertex(0, 0, null);
+
+		//UserInterface ui = new UserInterface(new Scanner("text.txt"), new Scanner(System.in));
+		//ui.start();
+
+		Logic logic = new Logic(map, start, goal);
+		//List<Vertex> path = logic.FindPath();
+		for (Vertex v: logic.FindPath()) {
+			System.out.println(v);
+		}
+		/*if (path != null) {
+			for (Vertex v : path) {
+				System.out.println(v);
+			}
+		} else {
+			System.out.println("No path found");
+		}*/
+	}
 
     	/*File file = new File("C:\\Users\\Hunter\\eclipse-workspace\\Assignment 1\\src\\grid1");
         Scanner sc = new Scanner(file);
@@ -94,7 +100,8 @@ public class Main {
         int inputCol = sc2.nextInt();
     }*/
 
-    }
+
+
 	public static boolean LineOfSight(int[][] grid, Vertex v0, Vertex v1)
     {
     	int x0 = v0.row;
