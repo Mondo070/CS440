@@ -1,10 +1,15 @@
 package com.ai;
 
+import java.lang.Math;
+
 public class Vertex {
 
 	Vertex parent;
     int row;
     int col;
+    double h;
+    double g;
+    double f;
 //    boolean start;
 //    boolean goal;
 //    boolean open;
