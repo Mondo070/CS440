@@ -95,4 +95,83 @@ public class Main {
     }*/
 
     }
+	public static boolean LineOfSight(int[][] grid, Vertex v0, Vertex v1)
+    {
+    	int x0 = v0.row;
+    	int y0 = v0.col;
+    	int x1 = v1.row;
+    	int y1 = v1.col;
+    	int f = 0;
+    	int dx = Math.abs(x1-x0);
+    	int dy = Math.abs(y1-y0);
+    	int sy,sx;
+    	if (dy < 0) {
+    		dy = -dy;
+    		sy = -1;
+    	}
+    	else
+    	{
+    		sy = 1;
+    	}
+    	if (dx < 0)
+    	{
+    		dx = -dx;
+    		sx = -1;
+    	}
+    	else
+    	{
+    		sx = 1;
+    	}
+    	if (dx >= dy)
+    	{
+    		while (x0 != x1)
+    		{
+    			f = f + dy;
+    			if (f >= dx)
+    			{
+    				if (grid[x0 + ((sx - 1) / 2)][y0 + ((sy -  1) / 2)] == 1)
+    				{
+    					return false;
+    				}
+    				y0 = y0 + sy;
+    				f = f - dx;
+    			}
+    			if (f != 0 && grid[x0 + ((sx - 1) / 2)][y0 + ((sy -  1) / 2)] == 1)
+    			{
+    				return false;
+    			}
+    			if (dy == 0 && grid[x0 + ((sx - 1) / 2)][y0] == 1 && grid[x0 + ((sx - 1) / 2)][y0 - 1] == 1)
+    			{
+    				return false;
+    			}
+    			x0 = x0 + sx;
+    		}
+    	}
+    	else
+    	{
+    		while (y0 != y1)
+    		{
+    			f = f + dx;
+    			if (f >= dy)
+    			{
+    				if (grid[x0 + ((sx - 1) / 2)][y0 + ((sy -  1) / 2)] == 1)
+    				{
+    					return false;
+    				}
+    				x0 = x0 + sx;
+    				f = f - dy;
+    			}
+    			if (f != 0 && grid[x0 + ((sx - 1) / 2)][y0 + ((sy -  1) / 2)] == 1)
+    			{
+    				return false;
+    			}
+    			if (dy == 0 && grid[x0][y0 + ((sy - 1) / 2)] == 1 && grid[x0 - 1][y0 + ((sy - 1) / 2)] == 1)
+    			{
+    				return false;
+    			}
+    			y0 = y0 + sy;
+    		}
+    	}
+    	return true;
+    }
 }
